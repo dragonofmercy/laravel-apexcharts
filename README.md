@@ -41,11 +41,11 @@ $options = (new Builder())
 - [x] chart
 - [x] colors
 - [ ] dataLabels
-- [ ] fill
+- [x] fill
 - [x] forecastDataPoints
 - [x] grid
 - [x] labels
-- [x] legend
+- [ ] legend
 - [ ] markers
 - [x] noData
 - [ ] plotOptions
@@ -54,9 +54,9 @@ $options = (new Builder())
 - [x] states
 - [x] stroke
 - [x] subtitle
-- [ ] theme
+- [x] theme
 - [x] title
-- [ ] tooltip
+- [x] tooltip
 - [ ] xaxis
 - [ ] yaxis
 
