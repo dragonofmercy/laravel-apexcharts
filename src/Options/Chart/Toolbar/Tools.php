@@ -6,9 +6,6 @@ use ApexCharts\Abstracts\OptionsAbstract;
 
 class Tools extends OptionsAbstract
 {
-    /**
-     * Constructor.
-     */
     public function __construct(array $options = [])
     {
         $this->setOptions(config('apexcharts.options.chart.toolbar.tools'));

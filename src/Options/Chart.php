@@ -20,10 +20,6 @@ use Symfony\Component\Finder\SplFileInfo;
 class Chart extends OptionsAbstract
 {
     protected array $availableLocales = [];
-
-    /**
-     * Constructor.
-     */
     public function __construct(array $options = [])
     {
         $this->id($this->generateId());
@@ -31,28 +27,6 @@ class Chart extends OptionsAbstract
         $this->initLocalization();
 
         parent::__construct($options);
-    }
-
-    /**
-     * Sets the identifier option.
-     *
-     * @param string $value The identifier value to be set.
-     * @return static
-     */
-    public function id(string $value): static
-    {
-        return $this->setOption('id', $value);
-    }
-
-    /**
-     * Sets the background option for the chart.
-     *
-     * @param string $value The background value to be applied.
-     * @return static
-     */
-    public function background(string $value): static
-    {
-        return $this->setOption('background', $value);
     }
 
     /**
@@ -78,189 +52,96 @@ class Chart extends OptionsAbstract
         return $this;
     }
 
-    /**
-     * Sets the font family option.
-     *
-     * @param string $value The font family to be applied.
-     * @return static
-     */
+    public function id(string $value): static
+    {
+        return $this->setOption('id', $value);
+    }
+
+    public function background(string $value): static
+    {
+        return $this->setOption('background', $value);
+    }
+
     public function fontFamily(string $value): static
     {
         return $this->setOption('fontFamily', $value);
     }
 
-    /**
-     * Sets the foreground color option for the chart.
-     *
-     * @param string $value The color value to be set, typically in a valid color format such as HEX, RGB, or color name.
-     * @return static
-     */
     public function foreColor(string $value): static
     {
         return $this->setOption('foreColor', $value);
     }
 
-    /**
-     * Sets the group option with the given value.
-     *
-     * @param string $value The value to set for the group option.
-     * @return static
-     */
     public function group(string $value): static
     {
         return $this->setOption('group', $value);
     }
 
-    /**
-     * Sets the height option for the chart.
-     *
-     * @param int|string $value The height value, which can be specified as an integer or a string.
-     * @return static
-     */
     public function height(int|string $value): static
     {
         return $this->setOption('height', $value);
     }
 
-    /**
-     * Sets the width option.
-     *
-     * @param int|string $value The width value to set, can be an integer or a string.
-     * @return static
-     */
     public function width(int|string $value): static
     {
         return $this->setOption('width', $value);
     }
 
-    /**
-     * Sets the nonce value for the object.
-     *
-     * @param string $value The nonce value to be set.
-     * @return static
-     */
     public function nonce(string $value): static
     {
         return $this->setOption('nonce', $value);
     }
 
-    /**
-     * Sets the horizontal offset value.
-     *
-     * @param int $value The horizontal offset value to be set.
-     * @return static
-     */
-    public function offsetX(int $value): static
+    public function offsetX(float $value): static
     {
         return $this->setOption('offsetX', $value);
     }
 
-    /**
-     * Sets the vertical offset value.
-     *
-     * @param int $value The value for the vertical offset.
-     * @return static
-     */
-    public function offsetY(int $value): static
+    public function offsetY(float $value): static
     {
         return $this->setOption('offsetY', $value);
     }
 
-    /**
-     * Sets the parent height offset option.
-     *
-     * @param int $value The value to set for the parent height offset.
-     * @return static
-     */
     public function parentHeightOffset(int $value): static
     {
         return $this->setOption('parentHeightOffset', $value);
     }
 
-    /**
-     * Sets the option to enable or disable redrawing of the chart on parent resize.
-     *
-     * @param bool $value Determines whether the chart should redraw when its parent is resized.
-     * @return static
-     */
     public function redrawOnParentResize(bool $value): static
     {
         return $this->setOption('redrawOnParentResize', $value);
     }
 
-    /**
-     * Sets whether the chart should redraw automatically when the window is resized.
-     *
-     * @param bool $value Determines if the chart will redraw on window resize.
-     *                    True enables redrawing, false disables it.
-     * @return static
-     */
     public function redrawOnWindowResize(bool $value): static
     {
         return $this->setOption('redrawOnWindowResize', $value);
     }
 
-    /**
-     * Sets the sparkline option to enable or disable it.
-     *
-     * @param bool $value Indicates whether the sparkline is enabled (true) or disabled (false).
-     * @return static
-     */
     public function sparkline(bool $value): static
     {
         return $this->setOption('sparkline.enabled', $value);
     }
 
-    /**
-     * Enables or disables the stacking functionality.
-     *
-     * @param bool $value Determines if stacking is enabled (true) or disabled (false).
-     * @return static
-     */
     public function stacked(bool $value): static
     {
         return $this->setOption('stacked.enabled', $value);
     }
 
-    /**
-     * Sets whether the chart should stack only bar series.
-     *
-     * @param bool $value Indicates if only bar series should be stacked.
-     * @return static
-     */
     public function stackOnlyBar(bool $value): static
     {
         return $this->setOption('stackOnlyBar', $value);
     }
 
-    /**
-     * Sets the stack type for the chart.
-     *
-     * @param ChartStackType $value The stack type to be applied to the chart.
-     * @return static
-     */
     public function stackType(ChartStackType $value): static
     {
         return $this->setOption('stackType', $value);
     }
 
-    /**
-     * Sets the chart type option.
-     *
-     * @param ChartType $value The chart type to be set.
-     * @return static
-     */
     public function type(ChartType $value): static
     {
         return $this->setOption('type', $value);
     }
 
-    /**
-     * Configures the animation settings.
-     *
-     * @param bool|Animations $value Boolean to enable or disable animations, or an Animations object to configure animation settings.
-     * @return static
-     */
     public function animations(bool|Animations $value): static
     {
         if(is_bool($value)){
@@ -270,13 +151,6 @@ class Chart extends OptionsAbstract
         }
     }
 
-    /**
-     * Assigns or retrieves the value for the current Toolbar instance.
-     *
-     * @param bool|Toolbar $value If provided, sets the value for the Toolbar and returns the instance.
-     *                            If not provided, retrieves the current value of the Toolbar.
-     * @return static
-     */
     public function toolbar(bool|Toolbar $value): static
     {
         if(is_bool($value)){
@@ -286,12 +160,6 @@ class Chart extends OptionsAbstract
         }
     }
 
-    /**
-     * Updates the value or retrieves the current object or boolean.
-     *
-     * @param bool|Zoom $value The value to update or the Zoom instance to retrieve.
-     * @return static
-     */
     public function zoom(bool|Zoom $value): static
     {
         if(is_bool($value)){
@@ -301,12 +169,6 @@ class Chart extends OptionsAbstract
         }
     }
 
-    /**
-     * Configures the selection option.
-     *
-     * @param bool|Selection $value A boolean to enable or disable selection, or a Selection instance for detailed configuration.
-     * @return static
-     */
     public function selection(bool|Selection $value): static
     {
         if(is_bool($value)){
@@ -316,23 +178,11 @@ class Chart extends OptionsAbstract
         }
     }
 
-    /**
-     * Sets the chart events option.
-     *
-     * @param Events $value The chart events to be set.
-     * @return static
-     */
     public function events(Events $value): static
     {
         return $this->setOption('events', $value);
     }
 
-    /**
-     * Sets the drop shadow option for the chart.
-     *
-     * @param DropShadow $value The drop shadow configuration to be set.
-     * @return static
-     */
     public function dropShadow(DropShadow $value): static
     {
         return $this->setOption('dropShadow', $value);

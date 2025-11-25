@@ -8,9 +8,6 @@ use Illuminate\Support\Str;
 
 class Export extends OptionsAbstract
 {
-    /**
-     * Constructor.
-     */
     public function __construct(array $options = [])
     {
         $this->setOptions(config('apexcharts.options.chart.toolbar.export'));
