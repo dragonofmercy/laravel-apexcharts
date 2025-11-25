@@ -1,0 +1,22 @@
+{
+    "name": "dragonofmercy/apexcharts",
+    "description": "ApexCharts builder for Laravel",
+    "authors" : [{
+        "name" : "DragonOfMercy",
+        "email" : "dragonofmercy@gmail.com",
+        "role" : "Developer"
+    }],
+    "homepage" : "https://github.com/dragonofmercy/laravel-apexcharts",
+    "license" : "MIT",
+    "require": {
+        "balping/json-raw-encoder": "^1.0",
+        "laravel/framework": "^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ApexCharts\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": false
+}
