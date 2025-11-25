@@ -18,7 +18,6 @@ return [
         'chart' => [
             'fontFamily' => 'inherit',
             'defaultLocale' => 'auto',
-            'parentHeightOffset' => 0,
             'animations' => [
                 'enabled' => false,
             ],
