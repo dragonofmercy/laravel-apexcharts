@@ -20,10 +20,12 @@ use ApexCharts\Options\Tooltip;
 use ApexCharts\Options\XAxis;
 use ApexCharts\Options\YAxis;
 use ApexCharts\Traits\Options;
+use BackedEnum;
 use Balping\JsonRaw\Encoder;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use UnitEnum;
 use function Illuminate\Support\enum_value;
 
 class Builder implements Jsonable
