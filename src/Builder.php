@@ -182,7 +182,7 @@ class Builder implements Jsonable
             $this->setOption('chart', Chart::make());
         }
 
-        return $this->getOption('chart.id');
+        return $this->getOption('chart')->getOption('id');
     }
 
     /**
