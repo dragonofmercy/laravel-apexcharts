@@ -5,6 +5,7 @@ namespace ApexCharts\Options;
 use ApexCharts\Abstracts\OptionsAbstract;
 use ApexCharts\Enums\Align;
 use ApexCharts\Enums\VerticalAlign;
+use ApexCharts\Options\NoData\Style;
 
 class NoData extends OptionsAbstract
 {

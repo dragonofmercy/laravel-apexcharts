@@ -1,19 +1,14 @@
 <?php
 
-namespace ApexCharts\Options;
+namespace ApexCharts\Abstracts\Options;
 
 use ApexCharts\Abstracts\OptionsAbstract;
 
-class Style extends OptionsAbstract
+class StyleAbstract extends OptionsAbstract
 {
     public function fontSize(string $fontSize): static
     {
         return $this->setOption('fontSize', $fontSize);
-    }
-
-    public function fontWeight(string|int $fontWeight): static
-    {
-        return $this->setOption('fontWeight', $fontWeight);
     }
 
     public function fontFamily(string $fontFamily): static
