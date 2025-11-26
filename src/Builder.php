@@ -126,8 +126,12 @@ class Builder implements Jsonable
         return $this->setOption('theme', $theme);
     }
 
-    public function markers(Markers $markers): static
+    public function markers(bool|Markers $markers): static
     {
+        if($markers === false){
+            return $this->setOption('markers.size', 0);
+        }
+
         return $this->setOption('markers', $markers);
     }
 
