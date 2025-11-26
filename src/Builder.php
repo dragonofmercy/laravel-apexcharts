@@ -222,10 +222,12 @@ class Builder implements Jsonable
             return $item->map(fn($value) => $this->processRecursive($value));
         }
 
+        if($item instanceof UnitEnum){
+            return enum_value($item);
+        }
+
         if(is_object($item)){
-            foreach($item as $key => $value) {
-                $item->{$key} = $this->processRecursive($value);
-            }
+            return $this->processRecursive($item->getOptions());
         }
 
         return $item;
