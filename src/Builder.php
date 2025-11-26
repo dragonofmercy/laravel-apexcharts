@@ -166,7 +166,7 @@ class Builder implements Jsonable
      */
     public function dataset(array $series): static
     {
-        Arr::map($series, function ($serie){
+        Arr::map($series, function($serie){
             $this->serie($serie);
         });
 
