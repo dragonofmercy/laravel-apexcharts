@@ -178,13 +178,11 @@ class Builder implements Jsonable
      */
     public function getId(): string
     {
-        if($this->getOption('chart')){
-            /** @var Chart $chartOptions */
-            $chartOptions = $this->getOption('chart', new Chart());
-            return $chartOptions->getOption('id', "");
+        if(!$this->getOption('chart') instanceof Chart){
+            $this->setOption('chart', Chart::make());
         }
 
-        return "";
+        return $this->getOption('chart.id');
     }
 
     /**

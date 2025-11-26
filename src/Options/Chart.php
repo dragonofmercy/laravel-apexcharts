@@ -6,6 +6,7 @@ use ApexCharts\Abstracts\OptionsAbstract;
 use ApexCharts\Enums\ChartStackType;
 use ApexCharts\Enums\ChartType;
 use ApexCharts\Options\Chart\Animations;
+use ApexCharts\Options\Chart\Brush;
 use ApexCharts\Options\Chart\DropShadow;
 use ApexCharts\Options\Chart\Events;
 use ApexCharts\Options\Chart\Selection;
@@ -20,6 +21,7 @@ use Symfony\Component\Finder\SplFileInfo;
 class Chart extends OptionsAbstract
 {
     protected array $availableLocales = [];
+
     public function __construct(array $options = [])
     {
         $this->id($this->generateId());
@@ -175,6 +177,15 @@ class Chart extends OptionsAbstract
             return $this->setOption('selection.enabled', $value);
         } else {
             return $this->setOption('selection', $value);
+        }
+    }
+
+    public function brush(bool|Brush $value): static
+    {
+        if(is_bool($value)){
+            return $this->setOption('brush.enabled', $value);
+        } else {
+            return $this->setOption('brush', $value);
         }
     }
 
