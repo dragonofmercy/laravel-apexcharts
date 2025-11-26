@@ -127,7 +127,7 @@ class Tooltip extends OptionsAbstract
         return $this->setOption('z.title', $value);
     }
 
-    public function showMarker(bool $value = true)
+    public function marker(bool $value = true)
     {
         return $this->setOption('marker.show', $value);
     }
