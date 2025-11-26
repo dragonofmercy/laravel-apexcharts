@@ -40,22 +40,22 @@ $options = (new Builder())
 - [ ] annotations
 - [x] chart
 - [x] colors
-- [ ] dataLabels
+- [x] dataLabels
 - [x] fill
 - [x] forecastDataPoints
 - [x] grid
 - [x] labels
 - [ ] legend
-- [ ] markers
+- [x] markers
 - [x] noData
 - [ ] plotOptions
 - [ ] responsive
 - [x] series
 - [x] states
 - [x] stroke
-- [x] subtitle
 - [x] theme
 - [x] title
+- [x] subtitle
 - [x] tooltip
 - [ ] xaxis
 - [ ] yaxis
