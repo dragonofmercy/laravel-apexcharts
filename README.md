@@ -57,8 +57,8 @@ $options = (new Builder())
 - [x] title
 - [x] subtitle
 - [x] tooltip
-- [ ] xaxis
-- [ ] yaxis
+- [x] xaxis
+- [x] yaxis
 
 ## License
 
