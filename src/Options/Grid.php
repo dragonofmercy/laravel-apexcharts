@@ -3,7 +3,7 @@
 namespace ApexCharts\Options;
 
 use ApexCharts\Abstracts\OptionsAbstract;
-use ApexCharts\Enums\Position;
+use ApexCharts\Enums\Layer;
 use ApexCharts\Options\Grid\Padding;
 use Illuminate\Support\Arr;
 
@@ -25,7 +25,7 @@ class Grid extends OptionsAbstract
         return $this->setOption('strokeDashArray', $value);
     }
 
-    public function position(Position $value): static
+    public function position(Layer $value): static
     {
         return $this->setOption('position', $value);
     }

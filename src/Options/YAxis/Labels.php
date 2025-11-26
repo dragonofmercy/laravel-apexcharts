@@ -3,7 +3,7 @@
 namespace ApexCharts\Options\YAxis;
 
 use ApexCharts\Abstracts\Options\AxisLabelsAbstract;
-use ApexCharts\Enums\Align;
+use ApexCharts\Enums\HorizontalAlign;
 use Illuminate\Support\Str;
 
 class Labels extends AxisLabelsAbstract
@@ -24,7 +24,7 @@ class Labels extends AxisLabelsAbstract
         return parent::formatter($value);
     }
 
-    public function Align(Align $value): static
+    public function Align(HorizontalAlign $value): static
     {
         return $this->setOption('align', $value);
     }

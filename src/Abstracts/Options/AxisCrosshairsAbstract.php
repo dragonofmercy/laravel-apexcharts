@@ -3,11 +3,11 @@
 namespace ApexCharts\Abstracts\Options;
 
 use ApexCharts\Abstracts\OptionsAbstract;
-use ApexCharts\Enums\Position;
+use ApexCharts\Enums\Layer;
 
 abstract class AxisCrosshairsAbstract extends OptionsAbstract
 {
-    public function position(Position $value): static
+    public function position(Layer $value): static
     {
         return $this->setOption('position', $value);
     }

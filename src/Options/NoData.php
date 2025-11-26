@@ -3,7 +3,7 @@
 namespace ApexCharts\Options;
 
 use ApexCharts\Abstracts\OptionsAbstract;
-use ApexCharts\Enums\Align;
+use ApexCharts\Enums\HorizontalAlign;
 use ApexCharts\Enums\VerticalAlign;
 
 class NoData extends OptionsAbstract
@@ -19,7 +19,7 @@ class NoData extends OptionsAbstract
         return $this->setOption('text', $value);
     }
 
-    public function align(Align $value): static
+    public function align(HorizontalAlign $value): static
     {
         return $this->setOption('align', $value);
     }

@@ -45,7 +45,7 @@ $options = (new Builder())
 - [x] forecastDataPoints
 - [x] grid
 - [x] labels
-- [ ] legend
+- [x] legend
 - [x] markers
 - [x] noData
 - [ ] plotOptions

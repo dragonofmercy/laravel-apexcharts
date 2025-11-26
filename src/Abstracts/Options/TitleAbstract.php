@@ -3,7 +3,7 @@
 namespace ApexCharts\Abstracts\Options;
 
 use ApexCharts\Abstracts\OptionsAbstract;
-use ApexCharts\Enums\Align;
+use ApexCharts\Enums\HorizontalAlign;
 
 abstract class TitleAbstract extends OptionsAbstract
 {
@@ -12,7 +12,7 @@ abstract class TitleAbstract extends OptionsAbstract
         return $this->setOption('text', $text);
     }
 
-    public function align(Align $align): static
+    public function align(HorizontalAlign $align): static
     {
         return $this->setOption('align', $align);
     }

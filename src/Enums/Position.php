@@ -4,6 +4,8 @@ namespace ApexCharts\Enums;
 
 enum Position: string
 {
-    case Front = 'front';
-    case Back = 'back';
+    case Top = 'top';
+    case Right = 'right';
+    case Bottom = 'bottom';
+    case Left = 'left';
 }

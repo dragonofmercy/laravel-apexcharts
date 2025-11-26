@@ -2,7 +2,7 @@
 
 namespace ApexCharts\Enums;
 
-enum Align: string
+enum HorizontalAlign: string
 {
     case Left = 'left';
     case Center = 'center';
