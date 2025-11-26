@@ -2,9 +2,9 @@
 
 namespace ApexCharts\Options\Chart;
 
-use ApexCharts\Abstracts\OptionsAbstract;
+use ApexCharts\Abstracts\Options\DropShadowAbstract;
 
-class DropShadow extends OptionsAbstract
+class DropShadow extends DropShadowAbstract
 {
     public function __construct(array $options = [])
     {
@@ -12,31 +12,6 @@ class DropShadow extends OptionsAbstract
         $this->setOption('enabled', true);
 
         parent::__construct($options);
-    }
-
-    public function top(int $value): static
-    {
-        return $this->setOption('top', $value);
-    }
-
-    public function left(int $value): static
-    {
-        return $this->setOption('left', $value);
-    }
-
-    public function blur(int $value): static
-    {
-        return $this->setOption('blur', $value);
-    }
-
-    public function opacity(float $value): static
-    {
-        return $this->setOption('opacity', $value);
-    }
-
-    public function color(string|array $value): static
-    {
-        return $this->setOption('color', $value);
     }
 
     public function enabledOnSeries(int|array $value): static
