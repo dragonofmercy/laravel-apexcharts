@@ -49,22 +49,22 @@ class Selection extends OptionsAbstract
         return $this->setOption('stroke.opacity', $value);
     }
 
-    public function xAxisMin(int $value): static
+    public function xAxisMin(mixed $value): static
     {
         return $this->setOption('xaxis.min', $value);
     }
 
-    public function xAxisMax(int $value): static
+    public function xAxisMax(mixed $value): static
     {
         return $this->setOption('xaxis.max', $value);
     }
 
-    public function yAxisMin(int $value): static
+    public function yAxisMin(mixed $value): static
     {
         return $this->setOption('yaxis.min', $value);
     }
 
-    public function yAxisMax(int $value): static
+    public function yAxisMax(mixed $value): static
     {
         return $this->setOption('yaxis.max', $value);
     }
