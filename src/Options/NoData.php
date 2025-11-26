@@ -5,7 +5,6 @@ namespace ApexCharts\Options;
 use ApexCharts\Abstracts\OptionsAbstract;
 use ApexCharts\Enums\Align;
 use ApexCharts\Enums\VerticalAlign;
-use ApexCharts\Options\NoData\Style;
 
 class NoData extends OptionsAbstract
 {
@@ -40,8 +39,18 @@ class NoData extends OptionsAbstract
         return $this->setOption('offsetY', $offsetY);
     }
 
-    public function style(Style $style): static
+    public function fontSize(string $fontSize): static
     {
-        return $this->setOption('style', $style);
+        return $this->setOption('style.fontSize', $fontSize);
+    }
+
+    public function fontFamily(string $fontFamily): static
+    {
+        return $this->setOption('style.fontFamily', $fontFamily);
+    }
+
+    public function color(string $color): static
+    {
+        return $this->setOption('style.color', $color);
     }
 }

@@ -88,7 +88,7 @@ class Markers extends OptionsAbstract
         return $this->setOption('onDblClick', new Raw($value));
     }
 
-    public function showNullDataPoints(bool $value): static
+    public function showNullDataPoints(bool $value = true): static
     {
         return $this->setOption('showNullDataPoints', $value);
     }

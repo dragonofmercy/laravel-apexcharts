@@ -12,4 +12,9 @@ class DropShadow extends DropShadowAbstract
         $this->setOption('enabled', true);
         parent::__construct($options);
     }
+
+    public function color(string $value): static
+    {
+        return $this->setOption('color', $value);
+    }
 }

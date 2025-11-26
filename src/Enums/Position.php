@@ -2,7 +2,7 @@
 
 namespace ApexCharts\Enums;
 
-enum GridPosition: string
+enum Position: string
 {
     case Front = 'front';
     case Back = 'back';

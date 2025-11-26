@@ -22,22 +22,22 @@ class Tooltip extends OptionsAbstract
         return $this->setOption('enabledOnSeries', $value);
     }
 
-    public function shared(bool $value): static
+    public function shared(bool $value = true): static
     {
         return $this->setOption('shared', $value);
     }
 
-    public function followCursor(bool $value): static
+    public function followCursor(bool $value = true): static
     {
         return $this->setOption('followCursor', $value);
     }
 
-    public function intersect(bool $value): static
+    public function intersect(bool $value = true): static
     {
         return $this->setOption('intersect', $value);
     }
 
-    public function inverseOrder(bool $value): static
+    public function inverseOrder(bool $value = true): static
     {
         return $this->setOption('inverseOrder', $value);
     }
@@ -51,7 +51,7 @@ class Tooltip extends OptionsAbstract
         return $this->setOption('custom', new Raw($value));
     }
 
-    public function hideEmptySeries(bool $value): static
+    public function hideEmptySeries(bool $value = true): static
     {
         return $this->setOption('hideEmptySeries', $value);
     }
@@ -71,12 +71,12 @@ class Tooltip extends OptionsAbstract
         return $this->setOption('style.fontSize', $value);
     }
 
-    public function highlightDataSeries(bool $value)
+    public function highlightDataSeries(bool $value = true)
     {
         return $this->setOption('onDatasetHover.highlightDataSeries', $value);
     }
 
-    public function xShow(bool $value)
+    public function xShow(bool $value = true)
     {
         return $this->setOption('x.show', $value);
     }
@@ -127,7 +127,7 @@ class Tooltip extends OptionsAbstract
         return $this->setOption('z.title', $value);
     }
 
-    public function showMarker(bool $value)
+    public function showMarker(bool $value = true)
     {
         return $this->setOption('marker.show', $value);
     }

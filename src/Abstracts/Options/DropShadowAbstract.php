@@ -21,11 +21,6 @@ class DropShadowAbstract extends OptionsAbstract
         return $this->setOption('blur', $value);
     }
 
-    public function color(string|array $value): static
-    {
-        return $this->setOption('color', $value);
-    }
-
     public function opacity(float $value): static
     {
         return $this->setOption('opacity', $value);

@@ -107,27 +107,27 @@ class Chart extends OptionsAbstract
         return $this->setOption('parentHeightOffset', $value);
     }
 
-    public function redrawOnParentResize(bool $value): static
+    public function redrawOnParentResize(bool $value = true): static
     {
         return $this->setOption('redrawOnParentResize', $value);
     }
 
-    public function redrawOnWindowResize(bool $value): static
+    public function redrawOnWindowResize(bool $value = true): static
     {
         return $this->setOption('redrawOnWindowResize', $value);
     }
 
-    public function sparkline(bool $value): static
+    public function sparkline(bool $value = true): static
     {
         return $this->setOption('sparkline.enabled', $value);
     }
 
-    public function stacked(bool $value): static
+    public function stacked(bool $value = true): static
     {
-        return $this->setOption('stacked.enabled', $value);
+        return $this->setOption('stacked', $value);
     }
 
-    public function stackOnlyBar(bool $value): static
+    public function stackOnlyBar(bool $value = true): static
     {
         return $this->setOption('stackOnlyBar', $value);
     }

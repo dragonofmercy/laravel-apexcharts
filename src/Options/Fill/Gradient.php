@@ -34,7 +34,7 @@ class Gradient extends OptionsAbstract
         return $this->setOption('gradientToColors', $value);
     }
 
-    public function inverseColors(bool $value): static
+    public function inverseColors(bool $value = true): static
     {
         return $this->setOption('inverseColors', $value);
     }

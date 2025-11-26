@@ -36,4 +36,24 @@ abstract class TitleAbstract extends OptionsAbstract
     {
         return $this->setOption('floating', $floating);
     }
+
+    public function fontSize(string $fontSize): static
+    {
+        return $this->setOption('style.fontSize', $fontSize);
+    }
+
+    public function fontWeight(string|int $fontWeight): static
+    {
+        return $this->setOption('style.fontWeight', $fontWeight);
+    }
+
+    public function fontFamily(string $fontFamily): static
+    {
+        return $this->setOption('style.fontFamily', $fontFamily);
+    }
+
+    public function color(string $color): static
+    {
+        return $this->setOption('style.color', $color);
+    }
 }

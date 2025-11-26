@@ -6,7 +6,6 @@ use ApexCharts\Abstracts\OptionsAbstract;
 use ApexCharts\Enums\TextAnchor;
 use ApexCharts\Options\DataLabels\Background;
 use ApexCharts\Options\DataLabels\DropShadow;
-use ApexCharts\Options\DataLabels\Style;
 use Balping\JsonRaw\Raw;
 use Illuminate\Support\Str;
 
@@ -39,7 +38,7 @@ class DataLabels extends OptionsAbstract
         return $this->setOption('textAnchor', $value);
     }
 
-    public function distributed(bool $value): static
+    public function distributed(bool $value = true): static
     {
         return $this->setOption('distributed', $value);
     }
@@ -54,11 +53,6 @@ class DataLabels extends OptionsAbstract
         return $this->setOption('offsetY', $value);
     }
 
-    public function style(Style $value): static
-    {
-        return $this->setOption('style', $value);
-    }
-
     public function background(Background $value): static
     {
         return $this->setOption('colors', $value);
@@ -67,5 +61,25 @@ class DataLabels extends OptionsAbstract
     public function dropShadow(DropShadow $value): static
     {
         return $this->setOption('dropShadow', $value);
+    }
+
+    public function fontSize(string $fontSize): static
+    {
+        return $this->setOption('style.fontSize', $fontSize);
+    }
+
+    public function fontFamily(string $fontFamily): static
+    {
+        return $this->setOption('style.fontFamily', $fontFamily);
+    }
+
+    public function fontWeight(string|int $fontWeight): static
+    {
+        return $this->setOption('style.fontWeight', $fontWeight);
+    }
+
+    public function colors(array $colors): static
+    {
+        return $this->setOption('style.colors', $colors);
     }
 }

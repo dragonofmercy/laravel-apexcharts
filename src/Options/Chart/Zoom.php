@@ -19,12 +19,12 @@ class Zoom extends OptionsAbstract
         return $this->setOption('type', $type);
     }
 
-    public function autoScaleYaxis(bool $value): static
+    public function autoScaleYaxis(bool $value = true): static
     {
         return $this->setOption('autoScaleYaxis', $value);
     }
 
-    public function allowMouseWheelZoom(bool $value): static
+    public function allowMouseWheelZoom(bool $value = true): static
     {
         return $this->setOption('allowMouseWheelZoom', $value);
     }

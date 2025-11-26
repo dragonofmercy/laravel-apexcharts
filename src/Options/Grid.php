@@ -3,8 +3,9 @@
 namespace ApexCharts\Options;
 
 use ApexCharts\Abstracts\OptionsAbstract;
-use ApexCharts\Enums\GridPosition;
+use ApexCharts\Enums\Position;
 use ApexCharts\Options\Grid\Padding;
+use Illuminate\Support\Arr;
 
 class Grid extends OptionsAbstract
 {
@@ -24,17 +25,17 @@ class Grid extends OptionsAbstract
         return $this->setOption('strokeDashArray', $value);
     }
 
-    public function position(GridPosition $value): static
+    public function position(Position $value): static
     {
         return $this->setOption('position', $value);
     }
 
-    public function xAxis(bool $value): static
+    public function xAxis(bool $value = true): static
     {
         return $this->setOption('xaxis.lines.show', $value);
     }
 
-    public function yAxis(bool $value): static
+    public function yAxis(bool $value = true): static
     {
         return $this->setOption('yaxis.lines.show', $value);
     }
@@ -59,8 +60,14 @@ class Grid extends OptionsAbstract
         return $this->setOption('column.opacity', $value);
     }
 
-    public function padding(Padding $value): static
+    public function padding(?float $top = null, ?float $left = null, ?float $bottom = null, ?float $right = null): static
     {
-        return $this->setOption('padding', $value);
+        foreach(compact('top', 'left', 'bottom', 'right') as $name => $value){
+            if(null !== $value){
+                $this->setOption('padding.' . $name, $value);
+            }
+        }
+
+        return $this;
     }
 }

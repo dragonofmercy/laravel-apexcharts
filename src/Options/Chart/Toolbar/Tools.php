@@ -40,7 +40,7 @@ class Tools extends OptionsAbstract
      * @param bool $value Indicates whether zoom is enabled or disabled.
      * @return static
      */
-    public function zoom(bool $value): static
+    public function zoom(bool $value = true): static
     {
         return $this->setOption('zoom', $value);
     }
@@ -51,7 +51,7 @@ class Tools extends OptionsAbstract
      * @param bool $value The value to enable or disable zoom-in.
      * @return static
      */
-    public function zoomin(bool $value): static
+    public function zoomin(bool $value = true): static
     {
         return $this->setOption('zoomin', $value);
     }
@@ -62,7 +62,7 @@ class Tools extends OptionsAbstract
      * @param bool $value The value to enable or disable zoom-out.
      * @return static
      */
-    public function zoomout(bool $value): static
+    public function zoomout(bool $value = true): static
     {
         return $this->setOption('zoomout', $value);
     }
@@ -73,7 +73,7 @@ class Tools extends OptionsAbstract
      * @param bool $value Indicates whether panning is enabled.
      * @return static
      */
-    public function pan(bool $value): static
+    public function pan(bool $value = true): static
     {
         return $this->setOption('pan', $value);
     }
@@ -84,7 +84,7 @@ class Tools extends OptionsAbstract
      * @param bool $value Indicates whether to reset the option.
      * @return static
      */
-    public function reset(bool $value): static
+    public function reset(bool $value = true): static
     {
         return $this->setOption('reset', $value);
     }

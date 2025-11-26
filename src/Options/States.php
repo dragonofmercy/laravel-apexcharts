@@ -23,7 +23,7 @@ class States extends OptionsAbstract
         return $this->setOption('active.filter.type', $value);
     }
 
-    public function allowMultipleDataPointsSelection(bool $value): static
+    public function allowMultipleDataPointsSelection(bool $value = true): static
     {
         return $this->setOption('active.allowMultipleDataPointsSelection', $value);
     }

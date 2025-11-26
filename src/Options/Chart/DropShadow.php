@@ -14,6 +14,11 @@ class DropShadow extends DropShadowAbstract
         parent::__construct($options);
     }
 
+    public function color(string|array $value): static
+    {
+        return $this->setOption('color', $value);
+    }
+
     public function enabledOnSeries(int|array $value): static
     {
         return $this->setOption('enabledOnSeries', is_int($value) ? [$value] : $value);

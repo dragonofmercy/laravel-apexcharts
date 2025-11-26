@@ -3,7 +3,6 @@
 namespace ApexCharts\Options;
 
 use ApexCharts\Abstracts\Options\TitleAbstract;
-use ApexCharts\Options\Title\Style;
 
 class Title extends TitleAbstract
 {
@@ -12,10 +11,5 @@ class Title extends TitleAbstract
         parent::__construct($options);
 
         $this->setOptions(config('apexcharts.options.title'));
-    }
-
-    public function style(Style $style): static
-    {
-        return $this->setOption('style', $style);
     }
 }
