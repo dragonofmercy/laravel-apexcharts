@@ -6,17 +6,17 @@ use ApexCharts\Abstracts\OptionsAbstract;
 
 class DropShadowAbstract extends OptionsAbstract
 {
-    public function top(int $value): static
+    public function top(float $value): static
     {
         return $this->setOption('top', $value);
     }
 
-    public function left(int $value): static
+    public function left(float $value): static
     {
         return $this->setOption('left', $value);
     }
 
-    public function blur(int $value): static
+    public function blur(float $value): static
     {
         return $this->setOption('blur', $value);
     }

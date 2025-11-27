@@ -17,12 +17,12 @@ abstract class AxisCrosshairsAbstract extends OptionsAbstract
         return $this->setOption('stroke.color', $value);
     }
 
-    public function strokeWidth(int $value): static
+    public function strokeWidth(float $value): static
     {
         return $this->setOption('stroke.width', $value);
     }
 
-    public function strokeDashArray(int $value): static
+    public function strokeDashArray(float|array $value): static
     {
         return $this->setOption('stroke.dashArray', $value);
     }

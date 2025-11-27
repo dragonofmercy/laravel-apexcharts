@@ -49,7 +49,10 @@ class Chart extends OptionsAbstract
         }
 
         $this->setOption('defaultLocale', $value);
-        $this->setOption('locales', json_decode(File::get(__DIR__ . '/../Locales/' . $value . '.json'), true), true);
+
+        if($value !== 'en'){
+            $this->setOption('locales', json_decode(File::get(__DIR__ . '/../Locales/' . $value . '.json'), true), true);
+        }
 
         return $this;
     }
@@ -79,12 +82,12 @@ class Chart extends OptionsAbstract
         return $this->setOption('group', $value);
     }
 
-    public function height(int|string $value): static
+    public function height(float|string $value): static
     {
         return $this->setOption('height', $value);
     }
 
-    public function width(int|string $value): static
+    public function width(float|string $value): static
     {
         return $this->setOption('width', $value);
     }
@@ -104,7 +107,7 @@ class Chart extends OptionsAbstract
         return $this->setOption('offsetY', $value);
     }
 
-    public function parentHeightOffset(int $value): static
+    public function parentHeightOffset(float $value): static
     {
         return $this->setOption('parentHeightOffset', $value);
     }

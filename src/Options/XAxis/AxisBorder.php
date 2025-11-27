@@ -13,12 +13,12 @@ class AxisBorder extends AxisBorderAbstract
         parent::__construct($options);
     }
 
-    public function height(int $value): static
+    public function height(float|string $value): static
     {
         return $this->setOption('height', $value);
     }
 
-    public function width(int|string $value): static
+    public function width(float|string $value): static
     {
         return $this->setOption('width', $value);
     }

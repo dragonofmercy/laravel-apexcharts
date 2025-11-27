@@ -34,12 +34,12 @@ class Stroke extends OptionsAbstract
         return $this->setOption('colors', $colors);
     }
 
-    public function width(int|array $width): static
+    public function width(float|array $width): static
     {
         return $this->setOption('width', $width);
     }
 
-    public function dashArray(int|array $dashArray): static
+    public function dashArray(float|array $dashArray): static
     {
         return $this->setOption('dashArray', $dashArray);
     }

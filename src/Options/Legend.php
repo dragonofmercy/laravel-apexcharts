@@ -132,7 +132,7 @@ class Legend extends OptionsAbstract
         return $this->setOption('labels.useSeriesColors', $value);
     }
 
-    public function markersSize(int $value): static
+    public function markersSize(float $value): static
     {
         return $this->setOption('markers.size', $value);
     }
@@ -180,7 +180,7 @@ class Legend extends OptionsAbstract
         return $this->setOption('markers.offsetY', $value);
     }
 
-    public function itemMargin(?int $horizontal = null, ?int $vertical = null): static
+    public function itemMargin(?float $horizontal = null, ?float $vertical = null): static
     {
         if(null !== $horizontal){
             $this->setOption('itemMargin.horizontal', $horizontal);

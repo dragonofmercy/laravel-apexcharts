@@ -6,12 +6,12 @@ use ApexCharts\Abstracts\OptionsAbstract;
 
 abstract class AxisAbstract extends OptionsAbstract
 {
-    public function min(int $value): static
+    public function min(float $value): static
     {
         return $this->setOption('min', $value);
     }
 
-    public function max(int $value): static
+    public function max(float $value): static
     {
         return $this->setOption('max', $value);
     }

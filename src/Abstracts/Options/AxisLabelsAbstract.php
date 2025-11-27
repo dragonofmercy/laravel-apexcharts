@@ -27,7 +27,7 @@ abstract class AxisLabelsAbstract extends OptionsAbstract
         return $this->setOption('offsetY', $value);
     }
 
-    public function rotate(int $value): static
+    public function rotate(float $value): static
     {
         return $this->setOption('rotate', $value);
     }

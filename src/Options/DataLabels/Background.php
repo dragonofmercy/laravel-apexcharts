@@ -19,7 +19,7 @@ class Background extends OptionsAbstract
         return $this->setOption('foreColor', $value);
     }
 
-    public function padding(int $value): static
+    public function padding(float $value): static
     {
         return $this->setOption('padding', $value);
     }
@@ -29,7 +29,7 @@ class Background extends OptionsAbstract
         return $this->setOption('borderRadius', $value);
     }
 
-    public function borderWidth(int $value): static
+    public function borderWidth(float $value): static
     {
         return $this->setOption('borderWidth', $value);
     }

@@ -21,12 +21,12 @@ class Image extends OptionsAbstract
         return $this->setOption('y', $value);
     }
 
-    public function width(int $value): static
+    public function width(float $value): static
     {
         return $this->setOption('width', $value);
     }
 
-    public function height(int $value): static
+    public function height(float $value): static
     {
         return $this->setOption('height', $value);
     }

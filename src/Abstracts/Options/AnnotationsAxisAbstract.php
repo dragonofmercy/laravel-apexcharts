@@ -6,7 +6,7 @@ use ApexCharts\Enums\Position;
 
 abstract class AnnotationsAxisAbstract extends AnnotationsAbstract
 {
-    public function strokeDashArray(int $value): static
+    public function strokeDashArray(float|array $value): static
     {
         return $this->setOption('strokeDashArray', $value);
     }

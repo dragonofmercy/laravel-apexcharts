@@ -22,12 +22,12 @@ class ForecastDataPoints extends OptionsAbstract
         return $this->setOption('fillOpacity', $value);
     }
 
-    public function strokeWidth(int $value): static
+    public function strokeWidth(float $value): static
     {
         return $this->setOption('strokeWidth', $value);
     }
 
-    public function dashArray(int $value): static
+    public function dashArray(float|array $value): static
     {
         return $this->setOption('dashArray', $value);
     }

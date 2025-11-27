@@ -56,7 +56,7 @@ class Point extends OptionsAbstract
         return $this->setOption('click', new Raw($value));
     }
 
-    public function markerSize(int $value): static
+    public function markerSize(float $value): static
     {
         return $this->setOption('marker.size', $value);
     }
@@ -71,7 +71,7 @@ class Point extends OptionsAbstract
         return $this->setOption('marker.strokeColor', $value);
     }
 
-    public function markerStrokeWidth(int $value): static
+    public function markerStrokeWidth(float $value): static
     {
         return $this->setOption('marker.strokeWidth', $value);
     }
@@ -106,12 +106,12 @@ class Point extends OptionsAbstract
         return $this->setOption('image.path', $value);
     }
 
-    public function imageWidth(int $value): static
+    public function imageWidth(float $value): static
     {
         return $this->setOption('image.width', $value);
     }
 
-    public function imageHeight(int $value): static
+    public function imageHeight(float $value): static
     {
         return $this->setOption('image.height', $value);
     }

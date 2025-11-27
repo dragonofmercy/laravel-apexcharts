@@ -13,7 +13,7 @@ class AxisTicks extends AxisTicksAbstract
         parent::__construct($options);
     }
 
-    public function width(int $value): static
+    public function width(float $value): static
     {
         return $this->setOption('width', $value);
     }

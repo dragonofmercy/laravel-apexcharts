@@ -67,7 +67,7 @@ class Text extends OptionsAbstract
         return $this->setOption('borderRadius', $value);
     }
 
-    public function borderWidth(int $value): static
+    public function borderWidth(float $value): static
     {
         return $this->setOption('borderWidth', $value);
     }

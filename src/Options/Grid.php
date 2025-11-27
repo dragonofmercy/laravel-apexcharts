@@ -20,7 +20,7 @@ class Grid extends OptionsAbstract
         return $this->setOption('borderColor', $value);
     }
 
-    public function strokeDashArray(int $value): static
+    public function strokeDashArray(float|array $value): static
     {
         return $this->setOption('strokeDashArray', $value);
     }

@@ -19,7 +19,7 @@ abstract class AnnotationsAbstract extends OptionsAbstract
         return $this->setOption('label.borderRadius', $value);
     }
 
-    public function labelBorderWidth(int $value): static
+    public function labelBorderWidth(float $value): static
     {
         return $this->setOption('label.borderWidth', $value);
     }

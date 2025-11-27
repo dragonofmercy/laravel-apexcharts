@@ -18,7 +18,7 @@ class Bar extends PlotOptionsAbstract
         return ChartType::Bar;
     }
 
-    public function columnWidth(string|int $value): static
+    public function columnWidth(string|float $value): static
     {
         return $this->setOption('columnWidth', $value);
     }

@@ -17,10 +17,10 @@ class Export extends OptionsAbstract
     /**
      * Sets the scale option.
      *
-     * @param int $value The scale value to be set.
+     * @param float $value The scale value to be set.
      * @return static
      */
-    public function scale(int $value): static
+    public function scale(float $value): static
     {
         return $this->setOption('scale', $value);
     }
@@ -28,10 +28,10 @@ class Export extends OptionsAbstract
     /**
      * Sets the width option.
      *
-     * @param int $value The width value to be set.
+     * @param float $value The width value to be set.
      * @return static
      */
-    public function width(int $value): static
+    public function width(float $value): static
     {
         return $this->setOption('width', $value);
     }

@@ -17,12 +17,12 @@ class Image extends OptionsAbstract
         return $this->setOption('src', $src);
     }
 
-    public function width(int $width): static
+    public function width(float $width): static
     {
         return $this->setOption('width', $width);
     }
 
-    public function height(int $height): static
+    public function height(float $height): static
     {
         return $this->setOption('height', $height);
     }

@@ -15,7 +15,7 @@ class Markers extends OptionsAbstract
         parent::__construct($options);
     }
 
-    public function size(int|array $value): static
+    public function size(float|array $value): static
     {
         return $this->setOption('size', $value);
     }
@@ -30,7 +30,7 @@ class Markers extends OptionsAbstract
         return $this->setOption('strokeColors', $value);
     }
 
-    public function strokeWidth(int|array $value): static
+    public function strokeWidth(float|array $value): static
     {
         return $this->setOption('strokeWidth', $value);
     }
@@ -40,7 +40,7 @@ class Markers extends OptionsAbstract
         return $this->setOption('strokeOpacity', $value);
     }
 
-    public function strokeDashArray(int|array $value): static
+    public function strokeDashArray(float|array $value): static
     {
         return $this->setOption('strokeDashArray', $value);
     }
@@ -93,12 +93,12 @@ class Markers extends OptionsAbstract
         return $this->setOption('showNullDataPoints', $value);
     }
 
-    public function hoverSize(int $value): static
+    public function hoverSize(float $value): static
     {
         return $this->setOption('hover.size', $value);
     }
 
-    public function hoverSizeOffset(int $value): static
+    public function hoverSizeOffset(float $value): static
     {
         return $this->setOption('hover.sizeOffset', $value);
     }

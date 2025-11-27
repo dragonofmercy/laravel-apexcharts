@@ -18,17 +18,17 @@ class Pattern extends OptionsAbstract
         return $this->setOption('style', $value);
     }
 
-    public function width(int $value): static
+    public function width(float $value): static
     {
         return $this->setOption('width', $value);
     }
 
-    public function height(int $value): static
+    public function height(float $value): static
     {
         return $this->setOption('height', $value);
     }
 
-    public function strokeWidth(int $value): static
+    public function strokeWidth(float $value): static
     {
         return $this->setOption('strokeWidth', $value);
     }

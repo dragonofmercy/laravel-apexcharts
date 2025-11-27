@@ -49,7 +49,7 @@ class Zoom extends OptionsAbstract
         return $this->setOption('zoomedArea.stroke.opacity', $value);
     }
 
-    public function zoomedAreaStrokeWidth(int $value): static
+    public function zoomedAreaStrokeWidth(float $value): static
     {
         return $this->setOption('zoomedArea.stroke.width', $value);
     }

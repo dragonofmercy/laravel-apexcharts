@@ -17,7 +17,7 @@ abstract class TitleAbstract extends OptionsAbstract
         return $this->setOption('align', $align);
     }
 
-    public function margin(int $margin): static
+    public function margin(float $margin): static
     {
         return $this->setOption('margin', $margin);
     }

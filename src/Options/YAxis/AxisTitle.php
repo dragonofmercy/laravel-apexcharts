@@ -12,7 +12,7 @@ class AxisTitle extends AxisTitleAbstract
         parent::__construct($options);
     }
 
-    public function rotate(int $value): static
+    public function rotate(float $value): static
     {
         return $this->setOption('rotate', $value);
     }
