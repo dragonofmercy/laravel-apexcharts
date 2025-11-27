@@ -67,7 +67,7 @@ $options = (new Builder())
 - [x] markers
 - [x] noData
 - [x] plotOptions
-- [ ] responsive
+- [x] responsive
 - [x] series
 - [x] states
 - [x] stroke

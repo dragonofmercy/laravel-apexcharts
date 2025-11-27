@@ -32,14 +32,11 @@ class Builder implements Jsonable
 {
     use Options;
 
-    /**
-     * Initializes an instance and sets up default chart options by retrieving them from configuration.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function __construct(bool $withDefaults = true)
     {
-        $this->setOptions(config('apexcharts.options'));
+        if($withDefaults){
+            $this->setOptions(config('apexcharts.options'));
+        }
     }
 
     public function annotations(Annotations $annotations): static
@@ -172,6 +169,21 @@ class Builder implements Jsonable
     }
 
     /**
+     * Add responsive option with a specified breakpoint and builder options.
+     *
+     * @param float $brakepointDown The breakpoint value for the responsive setting.
+     * @param Builder $builder The builder instance containing options to be applied.
+     * @return static
+     */
+    public function responsive(float $brakepointDown, Builder $builder): static
+    {
+        return $this->setOption('responsive', [
+            'breakpoint' => $brakepointDown,
+            'options' => $builder->toArray()
+        ], true);
+    }
+
+    /**
      * Sets the dataset using the provided series.
      *
      * @param array $series An array of series to be set in the dataset.
@@ -201,13 +213,23 @@ class Builder implements Jsonable
     }
 
     /**
+     * Converts the options object to an array representation.
+     *
+     * @return array Returns the array representation of the options.
+     */
+    public function toArray(): array
+    {
+        return $this->collectRecursive($this->options)->toArray();
+    }
+
+    /**
      * Converts the options object to a JSON string representation.
      *
      * @return string Returns the JSON encoded string of the options.
      */
     public function toJson($options = 0): string
     {
-        return Encoder::encode($this->collectRecursive($this->options)->toArray());
+        return Encoder::encode($this->toArray());
     }
 
     /**
