@@ -9,6 +9,7 @@ enum ChartType: string
     case BoxPlot = 'boxPlot';
     case Bubble = 'bubble';
     case Candlestick = 'candlestick';
+    case Column = 'column';
     case Donut = 'donut';
     case Heatmap = 'heatmap';
     case Line = 'line';
