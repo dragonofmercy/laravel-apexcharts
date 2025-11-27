@@ -156,7 +156,7 @@ class Builder implements Jsonable
             return $this->setOption('tooltip.enabled', $value);
         }
 
-        return $this->setOption('dataLabels', $value);
+        return $this->setOption('tooltip', $value);
     }
 
     public function legend(bool|Legend $value): static
