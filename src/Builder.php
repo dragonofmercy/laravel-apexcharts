@@ -2,6 +2,7 @@
 namespace ApexCharts;
 
 use ApexCharts\Abstracts\Options\PlotOptionsAbstract;
+use ApexCharts\Options\Annotations;
 use ApexCharts\Options\Chart;
 use ApexCharts\Options\DataLabels;
 use ApexCharts\Options\Fill;
@@ -40,6 +41,11 @@ class Builder implements Jsonable
     public function __construct()
     {
         $this->setOptions(config('apexcharts.options'));
+    }
+
+    public function annotations(Annotations $annotations): static
+    {
+        return $this->setOption('annotations', $annotations);
     }
 
     public function chart(Chart $chart): static

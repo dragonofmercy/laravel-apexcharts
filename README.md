@@ -37,7 +37,7 @@ $options = (new Builder())
 
 ## Implementation Status
 
-- [ ] annotations
+- [x] annotations
 - [x] chart
 - [x] colors
 - [x] dataLabels
@@ -59,6 +59,11 @@ $options = (new Builder())
 - [x] tooltip
 - [x] xaxis
 - [x] yaxis
+
+### Additional Features
+
+- [ ] Blade directives
+- [ ] Chart auto brush
 
 ## License
 
