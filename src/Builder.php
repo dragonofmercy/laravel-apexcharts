@@ -21,7 +21,6 @@ use ApexCharts\Options\Tooltip;
 use ApexCharts\Options\XAxis;
 use ApexCharts\Options\YAxis;
 use ApexCharts\Traits\Options;
-use BackedEnum;
 use Balping\JsonRaw\Encoder;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Arr;
@@ -92,8 +91,12 @@ class Builder implements Jsonable
         return $this->setOption('fill', $fill);
     }
 
-    public function serie(Serie $serie): static
+    public function serie(Serie|array $serie): static
     {
+        if(is_array($serie)){
+            return $this->setOption('series', $serie);
+        }
+
         return $this->setOption('series', $serie, true);
     }
 
