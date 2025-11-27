@@ -20,6 +20,24 @@ A powerful and flexible ApexCharts wrapper package for Laravel 12, providing an 
 - PHP 8.2 or higher
 - Laravel 12.0 or higher
 
+## Getting Started
+
+### 1. Install the package
+
+````bash
+composer require dragonofmercy/apexcharts
+````
+
+### 2. Publish assets
+
+````bash
+php artisan vendor:publish --tag=apexcharts
+````
+
+### 3. Configure
+
+You can change the chart settings of your app from `config/apexcharts.php` file
+
 ## Usage example
 
 ```php
