@@ -75,7 +75,7 @@ class Builder implements Jsonable
             return $this->setOption('yaxis.show', $yAxis);
         }
 
-        return $this->setOption('yaxis', $yAxis);
+        return $this->setOption('yaxis', $yAxis, true);
     }
 
     public function grid(Grid $grid): static
