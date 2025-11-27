@@ -123,7 +123,7 @@ class RadialBar extends PlotOptionsAbstract
         return $this->setOption('barLabels', $value);
     }
 
-    public function dountLabelsName(bool|Name $value): static
+    public function dataLabelsName(bool|Name $value): static
     {
         $this->setOption('dataLabels.show', true);
 
@@ -134,7 +134,7 @@ class RadialBar extends PlotOptionsAbstract
         return $this->setOption('dataLabels.name', $value);
     }
 
-    public function donutLabelsValue(bool|Value $value): static
+    public function dataLabelsValue(bool|Value $value): static
     {
         $this->setOption('dataLabels.show', true);
 
@@ -145,7 +145,7 @@ class RadialBar extends PlotOptionsAbstract
         return $this->setOption('dataLabels.value', $value);
     }
 
-    public function donutLabelsTotal(bool|Total $value): static
+    public function dataLabelsTotal(bool|Total $value): static
     {
         $this->setOption('dataLabels.show', true);
 
