@@ -2,18 +2,14 @@
 
 namespace ApexCharts\Options\PlotOptions\RadialBar\DataLabels;
 
-use ApexCharts\Abstracts\Options\PlotOptionsDataLabelsTypeAbstract;
+use ApexCharts\Options\PlotOptions\Map\DataLabels\Name as MapName;
 
-class Name extends PlotOptionsDataLabelsTypeAbstract
+class Name extends MapName
 {
     public function __construct(array $options = [])
     {
         $this->setOptions(config('apexcharts.options.plotOptions.radialBar.dataLabels.name'));
+        $this->setOption('show', true);
         parent::__construct($options);
-    }
-
-    public function offsetY(float $value): static
-    {
-        return $this->setOption('offsetY', $value);
     }
 }

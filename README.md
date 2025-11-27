@@ -66,7 +66,7 @@ $options = (new Builder())
 - [x] legend
 - [x] markers
 - [x] noData
-- [ ] plotOptions
+- [x] plotOptions
 - [ ] responsive
 - [x] series
 - [x] states

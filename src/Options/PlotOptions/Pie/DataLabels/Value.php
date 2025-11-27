@@ -1,6 +1,6 @@
 <?php
 
-namespace ApexCharts\Options\PlotOptions\RadialBar\DataLabels;
+namespace ApexCharts\Options\PlotOptions\Pie\DataLabels;
 
 use ApexCharts\Options\PlotOptions\Map\DataLabels\Value as MapValue;
 
@@ -8,7 +8,7 @@ class Value extends MapValue
 {
     public function __construct(array $options = [])
     {
-        $this->setOptions(config('apexcharts.options.plotOptions.radialBar.dataLabels.value'));
+        $this->setOptions(config('apexcharts.options.plotOptions.pie.dataLabels.value'));
         $this->setOption('show', true);
         parent::__construct($options);
     }

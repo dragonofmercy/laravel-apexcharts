@@ -4,7 +4,7 @@ namespace ApexCharts\Abstracts\Options;
 
 use ApexCharts\Abstracts\OptionsAbstract;
 
-class PlotOptionsDataLabelsTypeAbstract extends OptionsAbstract
+abstract class PlotOptionsDataLabelsTypeAbstract extends OptionsAbstract
 {
     public function fontSize(string $value): static
     {

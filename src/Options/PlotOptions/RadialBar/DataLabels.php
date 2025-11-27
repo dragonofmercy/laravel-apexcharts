@@ -3,9 +3,9 @@
 namespace ApexCharts\Options\PlotOptions\RadialBar;
 
 use ApexCharts\Abstracts\OptionsAbstract;
-use ApexCharts\Options\PlotOptions\RadialBar\DataLabels\Name;
-use ApexCharts\Options\PlotOptions\RadialBar\DataLabels\Total;
-use ApexCharts\Options\PlotOptions\RadialBar\DataLabels\Value;
+use ApexCharts\Options\PlotOptions\Map\DataLabels\Name;
+use ApexCharts\Options\PlotOptions\Map\DataLabels\Total;
+use ApexCharts\Options\PlotOptions\Map\DataLabels\Value;
 
 class DataLabels extends OptionsAbstract
 {

@@ -2,28 +2,14 @@
 
 namespace ApexCharts\Options\PlotOptions\RadialBar\DataLabels;
 
-use ApexCharts\Abstracts\Options\PlotOptionsDataLabelsTypeAbstract;
-use Illuminate\Support\Str;
+use ApexCharts\Options\PlotOptions\Map\DataLabels\Total as MapTotal;
 
-class Total extends PlotOptionsDataLabelsTypeAbstract
+class Total extends MapTotal
 {
     public function __construct(array $options = [])
     {
         $this->setOptions(config('apexcharts.options.plotOptions.radialBar.dataLabels.total'));
+        $this->setOption('show', true);
         parent::__construct($options);
-    }
-
-    public function label(string $value): static
-    {
-        return $this->setOption('label', $value);
-    }
-
-    public function formatter(string $value): static
-    {
-        if(!Str::startsWith('function(', $value)){
-            $value = "function(w){ $value }";
-        }
-
-        return $this->setOption('formatter', $value);
     }
 }

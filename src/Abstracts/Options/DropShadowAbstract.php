@@ -4,7 +4,7 @@ namespace ApexCharts\Abstracts\Options;
 
 use ApexCharts\Abstracts\OptionsAbstract;
 
-class DropShadowAbstract extends OptionsAbstract
+abstract class DropShadowAbstract extends OptionsAbstract
 {
     public function top(float $value): static
     {

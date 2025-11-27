@@ -5,8 +5,10 @@ namespace ApexCharts\Options\PlotOptions;
 use ApexCharts\Abstracts\Options\PlotOptionsAbstract;
 use ApexCharts\Enums\ChartType;
 use ApexCharts\Enums\Layer;
+use ApexCharts\Options\PlotOptions\RadialBar\DataLabels\Name;
+use ApexCharts\Options\PlotOptions\RadialBar\DataLabels\Total;
+use ApexCharts\Options\PlotOptions\RadialBar\DataLabels\Value;
 use ApexCharts\Options\PlotOptions\RadialBar\BarLabels;
-use ApexCharts\Options\PlotOptions\RadialBar\DataLabels;
 use ApexCharts\Options\PlotOptions\RadialBar\Hollow\DropShadow;
 use ApexCharts\Options\PlotOptions\RadialBar\Track;
 
@@ -103,15 +105,6 @@ class RadialBar extends PlotOptionsAbstract
         return $this->setOption('hollow.dropShadow', $value);
     }
 
-    public function dataLabels(bool|DataLabels $value): static
-    {
-        if(is_bool($value)){
-            return $this->setOption('dataLabels.show', $value);
-        }
-
-        return $this->setOption('dataLabels', $value);
-    }
-
     public function track(bool|Track $value): static
     {
         if(is_bool($value)){
@@ -128,5 +121,38 @@ class RadialBar extends PlotOptionsAbstract
         }
 
         return $this->setOption('barLabels', $value);
+    }
+
+    public function dountLabelsName(bool|Name $value): static
+    {
+        $this->setOption('dataLabels.show', true);
+
+        if(is_bool($value)){
+            return $this->setOption('dataLabels.name.show', $value);
+        }
+
+        return $this->setOption('dataLabels.name', $value);
+    }
+
+    public function donutLabelsValue(bool|Value $value): static
+    {
+        $this->setOption('dataLabels.show', true);
+
+        if(is_bool($value)){
+            return $this->setOption('dataLabels.value.show', $value);
+        }
+
+        return $this->setOption('dataLabels.value', $value);
+    }
+
+    public function donutLabelsTotal(bool|Total $value): static
+    {
+        $this->setOption('dataLabels.show', true);
+
+        if(is_bool($value)){
+            return $this->setOption('dataLabels.total.show', $value);
+        }
+
+        return $this->setOption('dataLabels.total', $value);
     }
 }
