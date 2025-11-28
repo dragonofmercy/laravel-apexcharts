@@ -2,6 +2,7 @@
 namespace ApexCharts;
 
 use ApexCharts\Abstracts\Options\PlotOptionsAbstract;
+use ApexCharts\Enums\DataZoomPosition;
 use ApexCharts\Options\Annotations;
 use ApexCharts\Options\Chart;
 use ApexCharts\Options\DataLabels;
@@ -20,18 +21,24 @@ use ApexCharts\Options\Title;
 use ApexCharts\Options\Tooltip;
 use ApexCharts\Options\XAxis;
 use ApexCharts\Options\YAxis;
+use ApexCharts\Support\DataZoom;
 use ApexCharts\Traits\Options;
 use Balping\JsonRaw\Encoder;
 use Balping\JsonRaw\Raw;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Request;
+use Illuminate\View\ComponentAttributeBag;
 use UnitEnum;
 use function Illuminate\Support\enum_value;
 
 class Builder implements Jsonable
 {
     use Options;
+
+    protected ?DataZoom $dataZoom = null;
 
     public function __construct(bool $withDefaults = true)
     {
