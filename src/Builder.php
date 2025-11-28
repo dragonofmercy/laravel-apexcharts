@@ -263,10 +263,95 @@ class Builder implements Jsonable
             return enum_value($item);
         }
 
+        if($item instanceof Raw){
+            return $item;
+        }
+
         if(is_object($item)){
             return $this->processRecursive($item->getOptions());
         }
 
         return $item;
+    }
+
+    /**
+     * Sets the DataZoom object for the current instance.
+     *
+     * @param DataZoom $dataZoom The DataZoom object to be set.
+     * @return static
+     */
+    public function dataZoom(DataZoom $dataZoom): static
+    {
+        $this->dataZoom = $dataZoom;
+        return $this;
+    }
+
+    /**
+     * Renders a chart within a container div and a script using the given attributes.
+     *
+     * @param array|Collection|ComponentAttributeBag $attributes The attributes to be applied to the chart container.
+     * @return string Returns the rendered HTML content of the chart container with attributes and script.
+     */
+    public function renderChart(array|Collection|ComponentAttributeBag $attributes = [])
+    {
+        $dataZoomHtml = $this->renderDataZoom();
+
+        $tag = $this->getChartContainer();
+        $script = $this->getScript();
+
+        if($attributes instanceof Collection){
+            $attributes = $attributes->toArray();
+        } elseif(is_array($attributes)){
+            $attributes = new ComponentAttributeBag($attributes);
+        }
+
+        $html = Blade::render('<div {{ $attributes }}>' . $tag . $script . '</div>', compact('attributes'));
+
+        if(!$dataZoomHtml){
+            return $html;
+        }
+
+        return $this->dataZoom->getOption('position') === DataZoomPosition::Top ? $dataZoomHtml . $html : $html . $dataZoomHtml;
+    }
+
+    /**
+     * Renders the data zoom configuration and returns the result.
+     *
+     * @return string|false Returns the rendered data zoom configuration as a string,
+     *                      or false if the dataZoom property is null.
+     */
+    public function renderDataZoom(): string|false
+    {
+        if(null === $this->dataZoom){
+            return false;
+        }
+
+        return $this->dataZoom->build($this);
+    }
+
+    /**
+     * Retrieves the HTML container for the chart.
+     *
+     * @return string Returns the HTML string of the chart container.
+     */
+    public function getChartContainer(): string
+    {
+        return '<div id="' . $this->getId() . '"></div>';
+    }
+
+    /**
+     * Generates and returns the JavaScript code required to initialize and render an ApexCharts chart.
+     *
+     * @return string The HTML script tag containing the JavaScript code to render the chart.
+     */
+    public function getScript(): string
+    {
+        $js = 'new ApexCharts(document.querySelector("#' . $this->getId() . '"), ' . $this->toJson() . ').render();';
+
+        if(!Request::isXmlHttpRequest()){
+            $js = 'window.addEventListener("DOMContentLoaded",function(){' . $js . '});';
+        }
+
+        return '<script type="text/javascript">' . $js . '</script>';
     }
 }
