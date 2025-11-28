@@ -80,8 +80,7 @@ $options = (new Builder())
 
 ### Additional Features
 
-- [ ] Blade directives
-- [ ] Chart auto brush
+- [x] Chart auto brush
 
 ## License
 
