@@ -22,6 +22,7 @@ use ApexCharts\Options\XAxis;
 use ApexCharts\Options\YAxis;
 use ApexCharts\Traits\Options;
 use Balping\JsonRaw\Encoder;
+use Balping\JsonRaw\Raw;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
