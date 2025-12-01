@@ -65,7 +65,7 @@ class DataZoom extends OptionsAbstract
 
     public function serieIndex(int $index): static
     {
-        return $this->setOption('seriesIndex', $index);
+        return $this->setOption('serieIndex', $index);
     }
 
     public function chartType(ChartType $type): static
