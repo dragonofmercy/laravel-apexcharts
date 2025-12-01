@@ -4,6 +4,7 @@ namespace ApexCharts\Options;
 
 use ApexCharts\Abstracts\OptionsAbstract;
 use ApexCharts\Enums\ChartType;
+use Illuminate\Support\Collection;
 
 class Serie extends OptionsAbstract
 {
@@ -12,8 +13,12 @@ class Serie extends OptionsAbstract
         return $this->setOption('name', $name);
     }
 
-    public function data(array $data): static
+    public function data(array|Collection $data): static
     {
+        if($data instanceof Collection){
+            $data = $data->toArray();
+        }
+
         return $this->setOption('data', $data);
     }
 
