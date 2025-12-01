@@ -4,6 +4,7 @@ namespace ApexCharts\Support;
 
 use ApexCharts\Abstracts\OptionsAbstract;
 use ApexCharts\Builder;
+use ApexCharts\Enums\ChartType;
 use ApexCharts\Enums\DataZoomPosition;
 use ApexCharts\Options\Chart;
 use ApexCharts\Options\Chart\Brush;
@@ -13,9 +14,12 @@ use ApexCharts\Options\XAxis;
 use Illuminate\Support\Collection;
 use Illuminate\View\ComponentAttributeBag;
 use InvalidArgumentException;
+use RuntimeException;
 
 class DataZoom extends OptionsAbstract
 {
+    protected ?Builder $dataZoomBuilder = null;
+
     public function __construct(array $options = [])
     {
         $this->setOptions([
@@ -24,10 +28,24 @@ class DataZoom extends OptionsAbstract
             'position' => DataZoomPosition::Bottom,
             'serieIndex' => 0,
             'height' => 48,
+            'chartType' => null,
             'attributes' => new ComponentAttributeBag([])
         ]);
 
         parent::__construct($options);
+    }
+
+    public function attributes(array|Collection|ComponentAttributeBag $attributes): static
+    {
+        if(!$attributes instanceof ComponentAttributeBag){
+            if($attributes instanceof Collection){
+                $attributes = $attributes->toArray();
+            }
+
+            $attributes = new ComponentAttributeBag($attributes);
+        }
+
+        return $this->setOption('attributes', $attributes);
     }
 
     public function selection(Selection $selection): static
@@ -50,25 +68,39 @@ class DataZoom extends OptionsAbstract
         return $this->setOption('seriesIndex', $index);
     }
 
+    public function chartType(ChartType $type): static
+    {
+        if(!in_array($type, [ChartType::Area, ChartType::Bar, ChartType::Line])){
+            throw new InvalidArgumentException("Invalid chart type specified, must be one of Area, Bar or Line.");
+        }
+
+        return $this->setOption('chartType', $type);
+    }
+
     public function height(float $height): static
     {
         return $this->setOption('height', $height);
     }
 
-    public function attributes(array|Collection|ComponentAttributeBag $attributes): static
+    /**
+     * @return Builder
+     */
+    public function getBuilder(): Builder
     {
-        return $this->setOption('attributes', $attributes);
+        if(null === $this->dataZoomBuilder){
+            throw new RuntimeException("DataZoom has not been built yet.  Call the build() method first.");
+        }
+
+        return $this->dataZoomBuilder;
     }
 
     /**
-     * Builds and returns a chart representation based on the provided parent builder and internal options.
+     * Builds a new instance of the Builder class configured with the specified chart options.
      *
-     * @param Builder $parent The parent builder object containing options and configurations.
-     * @return string The rendered chart as a string.
-     *
-     * @throws InvalidArgumentException If the specified series index does not exist in the dataset.
+     * @param Builder $parent The parent Builder instance used as a reference for configuration.
+     * @return Builder
      */
-    public function build(Builder $parent): string
+    public function build(Builder $parent): Builder
     {
         $currentSeries = $parent->getOption('series');
         $serieIndex = $this->options['serieIndex'];
@@ -77,12 +109,13 @@ class DataZoom extends OptionsAbstract
             throw new InvalidArgumentException("The specified serie index does not exist in the dataset.");
         }
 
-        return (new Builder())
+        $this->dataZoomBuilder = (new Builder())
+            ->attributes($this->options['attributes'])
             ->tooltip(false)
             ->chart(
                 Chart::make()
                     ->id('zoom-' . $parent->getId())
-                    ->type($parent->getOption('chart')->getOption('type'))
+                    ->type($this->options['chartType'] ?? $parent->getOption('chart')->getOption('type'))
                     ->height($this->options['height'])
                     ->sparkline()
                     ->selection($this->options['selection'])
@@ -90,7 +123,8 @@ class DataZoom extends OptionsAbstract
             )
             ->stroke(Stroke::make()->width(2))
             ->xAxis(XAxis::make()->type($parent->getOption('xaxis')->getOption('type')))
-            ->serie([$currentSeries[$serieIndex]])
-            ->renderChart($this->options['attributes']);
+            ->serie([$currentSeries[$serieIndex]]);
+
+        return $this->dataZoomBuilder;
     }
 }
