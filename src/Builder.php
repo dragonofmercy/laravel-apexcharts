@@ -2,6 +2,7 @@
 namespace ApexCharts;
 
 use ApexCharts\Abstracts\Options\PlotOptionsAbstract;
+use ApexCharts\Enums\ChartType;
 use ApexCharts\Enums\DataZoomPosition;
 use ApexCharts\Options\Annotations;
 use ApexCharts\Options\Chart;
@@ -31,6 +32,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Request;
 use Illuminate\View\ComponentAttributeBag;
+use InvalidArgumentException;
 use UnitEnum;
 use function Illuminate\Support\enum_value;
 
@@ -39,12 +41,27 @@ class Builder implements Jsonable
     use Options;
 
     protected ?DataZoom $dataZoom = null;
+    protected ComponentAttributeBag $attributes;
 
     public function __construct(bool $withDefaults = true)
     {
         if($withDefaults){
             $this->setOptions(config('apexcharts.options'));
         }
+    }
+
+    public function attributes(array|Collection|ComponentAttributeBag $attributes): static
+    {
+        if(!$attributes instanceof ComponentAttributeBag){
+            if($attributes instanceof Collection){
+                $attributes = $attributes->toArray();
+            }
+
+            $attributes = new ComponentAttributeBag($attributes);
+        }
+
+        $this->attributes = $attributes;
+        return $this;
     }
 
     public function annotations(Annotations $annotations): static
@@ -241,6 +258,92 @@ class Builder implements Jsonable
     }
 
     /**
+     * Sets the DataZoom configuration for the chart if the chart type
+     * is Area, Bar, or Line. Throws an exception if the chart type is not supported.
+     *
+     * @param DataZoom $dataZoom The DataZoom configuration to be applied.
+     * @return static
+     * @throws InvalidArgumentException If the DataZoom is applied to an unsupported chart type.
+     */
+    public function dataZoom(DataZoom $dataZoom): static
+    {
+        if($this->getOption('chart') instanceof Chart){
+            if(in_array($this->getOption('chart')->getOption('type'), [ChartType::Area, ChartType::Bar, ChartType::Line])){
+                $this->dataZoom = $dataZoom;
+                return $this;
+            }
+        }
+
+        throw new InvalidArgumentException("Datazoom is not supported for chart type Area, Bar or Line");
+    }
+
+    /**
+     * Renders the chart with the provided attributes and optionally includes a data zoom component.
+     *
+     * @param array|Collection|ComponentAttributeBag $attributes The attributes used for rendering the chart.
+     * @return string The rendered chart HTML.
+     */
+    public function renderChart(array|Collection|ComponentAttributeBag $attributes = [])
+    {
+        $this->dataZoom?->build($this);
+
+        $chartContainer = $this->getChartContainer();
+        $script = $this->getScriptContainer();
+
+        if($attributes instanceof Collection){
+            $attributes = $attributes->toArray();
+        } elseif(is_array($attributes)){
+            $attributes = new ComponentAttributeBag($attributes);
+        }
+
+        if($this->dataZoom){
+            $dataZoomHtml = $this->dataZoom->getBuilder()->getChartContainer();
+            $chartContainer = $this->dataZoom->getOption('position') === DataZoomPosition::Top ? $dataZoomHtml . $chartContainer : $chartContainer . $dataZoomHtml;
+        }
+
+        return Blade::render('<div {{ $attributes }}>' . $chartContainer . $script . '</div>', compact('attributes'));
+    }
+
+    /**
+     * Retrieves the HTML container for the chart.
+     *
+     * @return string Returns the HTML string of the chart container.
+     */
+    public function getChartContainer(): string
+    {
+        $attributes = $this->attributes ?? new ComponentAttributeBag();
+        $id = $this->getId();
+
+        return Blade::render('<div {{ $attributes->except("id") }} id="{{ $id }}"></div>', compact('attributes', 'id'));
+    }
+
+    /**
+     * Retrieves the script container as a string.
+     *
+     * @return string The script container wrapped with the script content.
+     */
+    public function getScriptContainer(): string
+    {
+        $script = $this->getScript();
+
+        if($this->dataZoom){
+            $script.= $this->dataZoom->getBuilder()->getScript();
+        }
+
+        return $this->wrapScriptContainer($script);
+    }
+
+    /**
+     * Generates and returns the JavaScript code required to initialize and render an ApexCharts chart.
+     *
+     * @return string The HTML script tag containing the JavaScript code to render the chart.
+     */
+    public function getScript(): string
+    {
+        return 'new ApexCharts(document.querySelector("#' . $this->getId() . '"), ' . $this->toJson() . ').render();';
+    }
+
+    /**
      * Processes the given array recursively and returns a collection.
      *
      * @param array $array The array to be processed recursively.
@@ -283,83 +386,18 @@ class Builder implements Jsonable
     }
 
     /**
-     * Sets the DataZoom object for the current instance.
+     * Wraps a JavaScript code snippet in a <script> tag and ensures
+     * it is executed after the DOM has loaded when not an XMLHttpRequest.
      *
-     * @param DataZoom $dataZoom The DataZoom object to be set.
-     * @return static
+     * @param string $script The JavaScript code snippet to be wrapped.
+     * @return string The wrapped JavaScript code in a <script> HTML element.
      */
-    public function dataZoom(DataZoom $dataZoom): static
+    protected function wrapScriptContainer(string $script)
     {
-        $this->dataZoom = $dataZoom;
-        return $this;
-    }
-
-    /**
-     * Renders a chart within a container div and a script using the given attributes.
-     *
-     * @param array|Collection|ComponentAttributeBag $attributes The attributes to be applied to the chart container.
-     * @return string Returns the rendered HTML content of the chart container with attributes and script.
-     */
-    public function renderChart(array|Collection|ComponentAttributeBag $attributes = [])
-    {
-        $dataZoomHtml = $this->renderDataZoom();
-
-        $tag = $this->getChartContainer();
-        $script = $this->getScript();
-
-        if($attributes instanceof Collection){
-            $attributes = $attributes->toArray();
-        } elseif(is_array($attributes)){
-            $attributes = new ComponentAttributeBag($attributes);
-        }
-
-        $html = Blade::render('<div {{ $attributes }}>' . $tag . $script . '</div>', compact('attributes'));
-
-        if(!$dataZoomHtml){
-            return $html;
-        }
-
-        return $this->dataZoom->getOption('position') === DataZoomPosition::Top ? $dataZoomHtml . $html : $html . $dataZoomHtml;
-    }
-
-    /**
-     * Renders the data zoom configuration and returns the result.
-     *
-     * @return string|false Returns the rendered data zoom configuration as a string,
-     *                      or false if the dataZoom property is null.
-     */
-    public function renderDataZoom(): string|false
-    {
-        if(null === $this->dataZoom){
-            return false;
-        }
-
-        return $this->dataZoom->build($this);
-    }
-
-    /**
-     * Retrieves the HTML container for the chart.
-     *
-     * @return string Returns the HTML string of the chart container.
-     */
-    public function getChartContainer(): string
-    {
-        return '<div id="' . $this->getId() . '"></div>';
-    }
-
-    /**
-     * Generates and returns the JavaScript code required to initialize and render an ApexCharts chart.
-     *
-     * @return string The HTML script tag containing the JavaScript code to render the chart.
-     */
-    public function getScript(): string
-    {
-        $js = 'new ApexCharts(document.querySelector("#' . $this->getId() . '"), ' . $this->toJson() . ').render();';
-
         if(!Request::isXmlHttpRequest()){
-            $js = 'window.addEventListener("DOMContentLoaded",function(){' . $js . '});';
+            $script = 'window.addEventListener("DOMContentLoaded",function(){' . $script . '});';
         }
 
-        return '<script type="text/javascript">' . $js . '</script>';
+        return '<script type="text/javascript">' . $script . '</script>';
     }
 }
