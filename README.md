@@ -1,8 +1,8 @@
 # laravel-apexcharts
 
-[![](https://img.shields.io/static/v1?label=laravel&message=%E2%89%A512.0&color=0078BE&logo=laravel&style=flat)](https://packagist.org/packages/dragonofmercy/apexcharts)
-[![](https://img.shields.io/packagist/dt/dragonofmercy/apexcharts)](https://packagist.org/packages/dragonofmercy/apexcharts)
-[![](https://img.shields.io/packagist/v/dragonofmercy/apexcharts)](https://packagist.org/packages/dragonofmercy/apexcharts)
+[![](https://img.shields.io/static/v1?label=laravel&message=%E2%89%A512.0&color=0078BE&logo=laravel&style=flat)](https://packagist.org/packages/dragonofmercy/laravel-apexcharts)
+[![](https://img.shields.io/packagist/dt/dragonofmercy/laravel-apexcharts)](https://packagist.org/packages/dragonofmercy/laravel-apexcharts)
+[![](https://img.shields.io/packagist/v/dragonofmercy/laravel-apexcharts)](https://packagist.org/packages/dragonofmercy/laravel-apexcharts)
 [![](https://img.shields.io/github/license/dragonofmercy/laravel-apexcharts)](https://github.com/dragonofmercy/laravel-apexcharts/blob/main/LICENSE)
 
 A powerful and flexible ApexCharts wrapper package for Laravel 12, providing an elegant PHP API to build beautiful, interactive charts in your Laravel applications.
