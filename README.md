@@ -57,32 +57,32 @@ $options = (new Builder())
 
 ## Implementation Status
 
-- [x] annotations
-- [x] chart
-- [x] colors
-- [x] dataLabels
-- [x] fill
-- [x] forecastDataPoints
-- [x] grid
-- [x] labels
-- [x] legend
-- [x] markers
-- [x] noData
-- [x] plotOptions
-- [x] responsive
-- [x] series
-- [x] states
-- [x] stroke
-- [x] theme
-- [x] title
-- [x] subtitle
-- [x] tooltip
-- [x] xaxis
-- [x] yaxis
+- ✅ annotations
+- ✅ chart
+- ✅ colors
+- ✅ dataLabels
+- ✅ fill
+- ✅ forecastDataPoints
+- ✅ grid
+- ✅ labels
+- ✅ legend
+- ✅ markers
+- ✅ noData
+- ✅ plotOptions
+- ✅ responsive
+- ✅ series
+- ✅ states
+- ✅ stroke
+- ✅ theme
+- ✅ title
+- ✅ subtitle
+- ✅ tooltip
+- ✅ xaxis
+- ✅ yaxis
 
 ### Additional Features
 
-- [x] Chart auto brush
+- ✅ Chart auto brush
 
 ## License
 
