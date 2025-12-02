@@ -1,5 +1,5 @@
 {
-    "name": "dragonofmercy/apexcharts",
+    "name": "dragonofmercy/laravel-apexcharts",
     "description": "ApexCharts builder for Laravel",
     "authors" : [{
         "name" : "DragonOfMercy",

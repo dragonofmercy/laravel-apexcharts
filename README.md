@@ -27,7 +27,7 @@ A powerful and flexible ApexCharts wrapper package for Laravel 12, providing an 
 ### 1. Install the package
 
 ````bash
-composer require dragonofmercy/apexcharts
+composer require dragonofmercy/laravel-apexcharts
 ````
 
 ### 2. Publish assets
