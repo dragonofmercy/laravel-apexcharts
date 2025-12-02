@@ -6,9 +6,11 @@ use ApexCharts\Abstracts\OptionsAbstract;
 use ApexCharts\Builder;
 use ApexCharts\Enums\ChartType;
 use ApexCharts\Enums\DataZoomPosition;
+use ApexCharts\Enums\XAxisType;
 use ApexCharts\Options\Chart;
 use ApexCharts\Options\Chart\Brush;
 use ApexCharts\Options\Chart\Selection;
+use ApexCharts\Options\Fill;
 use ApexCharts\Options\Stroke;
 use ApexCharts\Options\XAxis;
 use Illuminate\Support\Collection;
@@ -29,6 +31,8 @@ class DataZoom extends OptionsAbstract
             'serieIndex' => 0,
             'height' => 48,
             'chartType' => null,
+            'stroke' => Stroke::make()->width(2),
+            'fill' => null,
             'attributes' => new ComponentAttributeBag([])
         ]);
 
@@ -66,6 +70,16 @@ class DataZoom extends OptionsAbstract
     public function serieIndex(int $index): static
     {
         return $this->setOption('serieIndex', $index);
+    }
+
+    public function stroke(Stroke $stroke): static
+    {
+        return $this->setOption('stroke', $stroke);
+    }
+
+    public function fill(Fill $fill): static
+    {
+        return $this->setOption('fill', $fill);
     }
 
     public function chartType(ChartType $type): static
@@ -121,10 +135,25 @@ class DataZoom extends OptionsAbstract
                     ->selection($this->options['selection'])
                     ->brush($this->options['brush']->target($parent->getId()))
             )
-            ->stroke(Stroke::make()->width(2))
-            ->xAxis(XAxis::make()->type($parent->getOption('xaxis')->getOption('type')))
+            ->stroke($this->options['stroke'])
+            ->xAxis(XAxis::make()->type($this->getXAxisType($parent)))
             ->serie([$currentSeries[$serieIndex]]);
 
+        if(null !== $this->options['fill']){
+            $this->dataZoomBuilder->fill($this->options['fill']);
+        }
+
         return $this->dataZoomBuilder;
+    }
+
+    protected function getXAxisType(Builder $parent): XAxisType
+    {
+        $type = $parent->getOption('xaxis')?->getOption('type');
+
+        if(null === $type){
+            $type = XAxisType::Datetime;
+        }
+
+        return $type;
     }
 }
