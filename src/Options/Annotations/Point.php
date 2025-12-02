@@ -31,7 +31,7 @@ class Point extends OptionsAbstract
 
     public function mouseEnter(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(e){ $value }";
         }
 
@@ -40,7 +40,7 @@ class Point extends OptionsAbstract
 
     public function mouseLeave(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(e){ $value }";
         }
 
@@ -49,7 +49,7 @@ class Point extends OptionsAbstract
 
     public function click(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(e){ $value }";
         }
 

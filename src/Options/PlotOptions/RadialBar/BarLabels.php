@@ -46,7 +46,7 @@ class BarLabels extends OptionsAbstract
 
     public function formatter(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(val){ $value }";
         }
 
@@ -55,7 +55,7 @@ class BarLabels extends OptionsAbstract
 
     public function onClick(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(e){ $value }";
         }
 

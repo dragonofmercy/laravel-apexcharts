@@ -61,7 +61,7 @@ class CustomIcon extends OptionsAbstract
      */
     public function click(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(chart, options, e){ $value }";
         }
 

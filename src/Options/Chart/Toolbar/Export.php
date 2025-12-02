@@ -110,7 +110,7 @@ class Export extends OptionsAbstract
      */
     public function csvCategoryFormatter(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(x){ $value }";
         }
 
@@ -125,7 +125,7 @@ class Export extends OptionsAbstract
      */
     public function csvValueFormatter(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(y){ $value }";
         }
 

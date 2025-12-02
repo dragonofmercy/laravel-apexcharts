@@ -46,7 +46,7 @@ abstract class AnnotationsAbstract extends OptionsAbstract
 
     public function labelMouseEnter(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(e){ $value }";
         }
 
@@ -55,7 +55,7 @@ abstract class AnnotationsAbstract extends OptionsAbstract
 
     public function labelMouseLeave(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(e){ $value }";
         }
 
@@ -64,7 +64,7 @@ abstract class AnnotationsAbstract extends OptionsAbstract
 
     public function labelClick(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(e){ $value }";
         }
 

@@ -16,7 +16,7 @@ class Value extends PlotOptionsDataLabelsTypeAbstract
 
     public function formatter(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(val){ $value }";
         }
 

@@ -44,7 +44,7 @@ class Tooltip extends OptionsAbstract
 
     public function custom(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(series, seriesIndex, dataPointIndex, w){ $value }";
         }
 
@@ -88,7 +88,7 @@ class Tooltip extends OptionsAbstract
 
     public function xFormatter(string $value)
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(value, series, seriesIndex, dataPointIndex, w){ $value }";
         }
 
@@ -97,7 +97,7 @@ class Tooltip extends OptionsAbstract
 
     public function yFormatter(string $value)
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(value, series, seriesIndex, dataPointIndex, w){ $value }";
         }
 
@@ -106,7 +106,7 @@ class Tooltip extends OptionsAbstract
 
     public function yTitleFormatter(string $value)
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(seriesName){ $value }";
         }
 
@@ -115,7 +115,7 @@ class Tooltip extends OptionsAbstract
 
     public function zFormatter(string $value)
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(value, series, seriesIndex, dataPointIndex, w){ $value }";
         }
 

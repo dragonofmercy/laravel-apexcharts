@@ -72,7 +72,7 @@ class Markers extends OptionsAbstract
 
     public function onClick(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(e){ $value }";
         }
 
@@ -81,7 +81,7 @@ class Markers extends OptionsAbstract
 
     public function onDblClick(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(e){ $value }";
         }
 

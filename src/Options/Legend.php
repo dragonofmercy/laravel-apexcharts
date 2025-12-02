@@ -81,7 +81,7 @@ class Legend extends OptionsAbstract
 
     public function formatter(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(seriesName, opts){ $value }";
         }
 
@@ -90,7 +90,7 @@ class Legend extends OptionsAbstract
 
     public function tooltipHoverFormatter(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(seriesName, opts){ $value }";
         }
 
@@ -154,7 +154,7 @@ class Legend extends OptionsAbstract
 
     public function markersCustomHtml(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "() => { $value }";
         }
 
@@ -163,7 +163,7 @@ class Legend extends OptionsAbstract
 
     public function markersOnClick(string $value): static
     {
-        if(!Str::startsWith('function(', $value)){
+        if(!Str::startsWith($value, 'function(')){
             $value = "function(chart, seriesIndex, opts){ $value }";
         }
 
