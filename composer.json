@@ -17,6 +17,13 @@
             "ApexCharts\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ApexCharts\\Provider"
+            ]
+        }
+    },
     "minimum-stability": "dev",
     "prefer-stable": false
 }
