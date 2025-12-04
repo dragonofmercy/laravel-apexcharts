@@ -55,7 +55,7 @@ class DataLabels extends OptionsAbstract
 
     public function background(Background $value): static
     {
-        return $this->setOption('colors', $value);
+        return $this->setOption('background', $value);
     }
 
     public function dropShadow(DropShadow $value): static
