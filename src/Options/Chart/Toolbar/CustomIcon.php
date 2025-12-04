@@ -27,7 +27,7 @@ class CustomIcon extends OptionsAbstract
      */
     public function index(int $value): static
     {
-        return $this->setOption('icon', $value);
+        return $this->setOption('index', $value);
     }
 
     /**

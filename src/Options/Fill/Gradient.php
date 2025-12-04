@@ -21,7 +21,7 @@ class Gradient extends OptionsAbstract
 
     public function type(GradientType $value): static
     {
-        return $this->setOption('shade', $value);
+        return $this->setOption('type', $value);
     }
 
     public function shadeIntensity(float $value): static
