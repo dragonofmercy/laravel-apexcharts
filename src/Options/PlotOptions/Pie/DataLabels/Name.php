@@ -3,6 +3,7 @@
 namespace ApexCharts\Options\PlotOptions\Pie\DataLabels;
 
 use ApexCharts\Options\PlotOptions\Map\DataLabels\Name as MapName;
+use Balping\JsonRaw\Raw;
 use Illuminate\Support\Str;
 
 class Name extends MapName
@@ -20,6 +21,6 @@ class Name extends MapName
             $value = "function(val){ $value }";
         }
 
-        return $this->setOption('formatter', $value);
+        return $this->setOption('formatter', new Raw($value));
     }
 }

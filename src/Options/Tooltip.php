@@ -92,7 +92,7 @@ class Tooltip extends OptionsAbstract
             $value = "function(value, series, seriesIndex, dataPointIndex, w){ $value }";
         }
 
-        return $this->setOption('x.formatter', $value);
+        return $this->setOption('x.formatter', new Raw($value));
     }
 
     public function yFormatter(string $value)
@@ -101,7 +101,7 @@ class Tooltip extends OptionsAbstract
             $value = "function(value, series, seriesIndex, dataPointIndex, w){ $value }";
         }
 
-        return $this->setOption('y.formatter', $value);
+        return $this->setOption('y.formatter', new Raw($value));
     }
 
     public function yTitleFormatter(string $value)
@@ -110,7 +110,7 @@ class Tooltip extends OptionsAbstract
             $value = "function(seriesName){ $value }";
         }
 
-        return $this->setOption('y.title.formatter', $value);
+        return $this->setOption('y.title.formatter', new Raw($value));
     }
 
     public function zFormatter(string $value)
@@ -119,7 +119,7 @@ class Tooltip extends OptionsAbstract
             $value = "function(value, series, seriesIndex, dataPointIndex, w){ $value }";
         }
 
-        return $this->setOption('z.formatter', $value);
+        return $this->setOption('z.formatter', new Raw($value));
     }
 
     public function zTitle(string $value)

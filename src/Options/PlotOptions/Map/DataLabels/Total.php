@@ -3,6 +3,7 @@
 namespace ApexCharts\Options\PlotOptions\Map\DataLabels;
 
 use ApexCharts\Abstracts\Options\PlotOptionsDataLabelsTypeAbstract;
+use Balping\JsonRaw\Raw;
 use Illuminate\Support\Str;
 
 class Total extends PlotOptionsDataLabelsTypeAbstract
@@ -18,6 +19,6 @@ class Total extends PlotOptionsDataLabelsTypeAbstract
             $value = "function(w){ $value }";
         }
 
-        return $this->setOption('formatter', $value);
+        return $this->setOption('formatter', new Raw($value));
     }
 }

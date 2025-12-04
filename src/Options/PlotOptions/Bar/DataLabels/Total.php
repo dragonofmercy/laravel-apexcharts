@@ -3,6 +3,7 @@
 namespace ApexCharts\Options\PlotOptions\Bar\DataLabels;
 
 use ApexCharts\Abstracts\OptionsAbstract;
+use Balping\JsonRaw\Raw;
 use Illuminate\Support\Str;
 
 class Total extends OptionsAbstract
@@ -20,7 +21,7 @@ class Total extends OptionsAbstract
             $value = "function(val, o){ $value }";
         }
 
-        return $this->setOption('formatter', $value);
+        return $this->setOption('formatter', new Raw($value));
     }
 
     public function offsetY(float $value): static

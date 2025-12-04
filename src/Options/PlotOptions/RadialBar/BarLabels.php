@@ -3,6 +3,7 @@
 namespace ApexCharts\Options\PlotOptions\RadialBar;
 
 use ApexCharts\Abstracts\OptionsAbstract;
+use Balping\JsonRaw\Raw;
 use Illuminate\Support\Str;
 
 class BarLabels extends OptionsAbstract
@@ -50,7 +51,7 @@ class BarLabels extends OptionsAbstract
             $value = "function(val){ $value }";
         }
 
-        return $this->setOption('formatter', $value);
+        return $this->setOption('formatter', new Raw($value));
     }
 
     public function onClick(string $value): static
@@ -59,6 +60,6 @@ class BarLabels extends OptionsAbstract
             $value = "function(e){ $value }";
         }
 
-        return $this->setOption('onClick', $value);
+        return $this->setOption('onClick', new Raw($value));
     }
 }
