@@ -11,6 +11,7 @@ use ApexCharts\Options\Chart;
 use ApexCharts\Options\Chart\Brush;
 use ApexCharts\Options\Chart\Selection;
 use ApexCharts\Options\Fill;
+use ApexCharts\Options\Grid;
 use ApexCharts\Options\Stroke;
 use ApexCharts\Options\XAxis;
 use Illuminate\Support\Collection;
@@ -135,6 +136,7 @@ class DataZoom extends OptionsAbstract
                     ->selection($this->options['selection'])
                     ->brush($this->options['brush']->target($parent->getId()))
             )
+            ->grid(Grid::make()->padding(left: 1, right: 1))
             ->stroke($this->options['stroke'])
             ->xAxis(XAxis::make()->type($this->getXAxisType($parent)))
             ->serie([$currentSeries[$serieIndex]]);
